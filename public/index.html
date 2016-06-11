@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>todo-list</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Todo List</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-block">
+            <form data-js="form">
+              <div class="form-group">
+                <label>task</label>
+                <input type="text" class="form-control" data-js="input-task">
+              </div>
+              <div class="clearfix">
+                <button type="submit" class="btn btn-primary pull-xs-right">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-block">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th class="text-xs-center">#</th>
+                  <th class="text-xs-center">task</th>
+                  <th class="text-xs-center">status</th>
+                  <th class="text-xs-center">delete</th>
+                </tr>
+              </thead>
+              <tbody data-js="tbody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="src/js/todo.js"></script>
+</body>
+</html>
