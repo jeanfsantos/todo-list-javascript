@@ -4,11 +4,12 @@
   var _todo = [];
   var _id = 1;
   var updateToDo = new CustomEvent('update');
+  var $tbody = $.querySelector('[data-js="tbody"]');
 
   function init(){
     var $form = $.querySelector('[data-js="form"]');
     $form.addEventListener('submit', handleForm, false);
-    $.addEventListener('update', handleContentTable, false);
+    $tbody.addEventListener('update', handleContentTable, false);
   }
 
   function handleForm(e){
@@ -22,28 +23,18 @@
     _todo.push(todo);
     _id++;
     $inputTask.value = '';
-    $.dispatchEvent(updateToDo);
+    $tbody.dispatchEvent(updateToDo);
   }
 
   function handleContentTable(){
-    var $tbody = $.querySelector('[data-js="tbody"]');
     $tbody.innerHTML = null;
     _todo.forEach(function(item){
       var frag = $.createDocumentFragment();
       var tr = $.createElement('tr');
-
-      var tdId = createCell(item.id);
-      tr.appendChild(tdId);
-
-      var tdTask = createCell(item.task);
-      tr.appendChild(tdTask);
-
-      var tdInputCheckbox = createCheckbox(item);
-      tr.appendChild(tdInputCheckbox);
-
-      var tdButtonRemove = createButtonRemove(item);
-      tr.appendChild(tdButtonRemove);
-
+      tr.appendChild(createCell(item.id));
+      tr.appendChild(createCell(item.task));
+      tr.appendChild(createCheckbox(item));
+      tr.appendChild(createButtonRemove(item));
       frag.appendChild(tr);
       $tbody.appendChild(frag);
     });
@@ -121,7 +112,7 @@
       if(item.id === Number(_this.getAttribute('data-value')))
         delete _todo[index];
     });
-    $.dispatchEvent(updateToDo);
+    $tbody.dispatchEvent(updateToDo);
   }
 
   init();
