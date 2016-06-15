@@ -1,8 +1,8 @@
 (function($){
   'use strict';
 
-  var _todo = [];
-  var _id = 1;
+  var _todo = getStorage('todo') || [];
+  var _id = getStorage('id') || 1;
   var updateToDo = new CustomEvent('update');
   var $tbody = $.querySelector('[data-js="tbody"]');
 
@@ -10,6 +10,7 @@
     var $form = $.querySelector('[data-js="form"]');
     $form.addEventListener('submit', handleForm, false);
     $tbody.addEventListener('update', handleContentTable, false);
+    $tbody.dispatchEvent(updateToDo);
   }
 
   function handleForm(e){
@@ -22,6 +23,8 @@
     };
     _todo.push(todo);
     _id++;
+    setStorage('todo', _todo);
+    setStorage('id', _id);
     $inputTask.value = '';
     $tbody.dispatchEvent(updateToDo);
   }
@@ -102,6 +105,7 @@
       if(item.id === Number(_this.getAttribute('value')))
         item.status = !item.status;
     });
+    setStorage('todo', _todo);
   }
 
   function removeItem(){
@@ -110,9 +114,18 @@
     var _this = this;
     _todo.forEach(function(item, index){
       if(item.id === Number(_this.getAttribute('data-value')))
-        delete _todo[index];
+        _todo.splice(index, 1);
     });
+    setStorage('todo', _todo);
     $tbody.dispatchEvent(updateToDo);
+  }
+
+  function setStorage(key, value){
+    return localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  function getStorage(key){
+    return JSON.parse(localStorage.getItem(key));
   }
 
   init();
