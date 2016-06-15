@@ -8,7 +8,9 @@
 
   function init(){
     var $form = $.querySelector('[data-js="form"]');
+    var $btnRemoveAll = $.querySelector('[data-js="btn-remove-all"]');
     $form.addEventListener('submit', handleForm, false);
+    $btnRemoveAll.addEventListener('click', removeAll, false);
     $tbody.addEventListener('update', handleContentTable, false);
     $tbody.dispatchEvent(updateToDo);
   }
@@ -117,6 +119,12 @@
         _todo.splice(index, 1);
     });
     setStorage('todo', _todo);
+    $tbody.dispatchEvent(updateToDo);
+  }
+
+  function removeAll(){
+    _todo = [];
+    localStorage.removeItem('todo');
     $tbody.dispatchEvent(updateToDo);
   }
 
