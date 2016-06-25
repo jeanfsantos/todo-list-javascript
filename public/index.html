@@ -14,44 +14,26 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-block">
-            <form data-js="form">
-              <div class="form-group">
-                <label>task</label>
-                <input type="text" class="form-control" data-js="input-task">
-              </div>
-              <div class="clearfix">
-                <div class="pull-xs-right">
-                  <button type="button" class="btn btn-danger" data-js="btn-remove-all">Remove All</button>
-                  <button type="submit" class="btn btn-primary">Add</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+      <div class="col-md-12">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#/index">List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#/add">Add</a>
+          </li>
+        </ul>
       </div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-block">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th class="text-xs-center">#</th>
-                  <th class="text-xs-center">task</th>
-                  <th class="text-xs-center">status</th>
-                  <th class="text-xs-center">delete</th>
-                </tr>
-              </thead>
-              <tbody data-js="tbody">
-              </tbody>
-            </table>
-          </div>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div data-js="main"></div>
       </div>
     </div>
   </div>
+  <script src="src/js/route.js"></script>
   <script src="src/js/todo.js"></script>
+  <script src="src/partials/index/index.js"></script>
+  <script src="src/partials/add/index.js"></script>
 </body>
 </html>
