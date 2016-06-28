@@ -1,7 +1,7 @@
 (function(Route, Todo, $){
   'use strict';
 
-  Route('index', '/src/partials/index/index.html', app);
+  Route('index', '/todo-list-javascript/public/src/partials/index/index.html', app);
 
   function app(){
     var $tbody = $.querySelector('[data-js="tbody"]');

@@ -1,7 +1,7 @@
 (function(Route, Todo, $){
   'use strict';
 
-  Route('add', '/src/partials/add/index.html', app);
+  Route('add', '/todo-list-javascript/public/src/partials/add/index.html', app);
 
   function app(){
     $.querySelector('[data-js="form"]')
