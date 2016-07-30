@@ -1,9 +1,9 @@
 {
   "name": "todo-list",
-  "version": "1.0.0",
+  "main": "index.js",
   "description": "todo list",
   "scripts": {
-    "start": "http-server public -p 3000"
+    "start": "node ."
   },
   "author": "Jean Santos <jeanwfsantos@gmail.com>",
   "license": "ISC",
